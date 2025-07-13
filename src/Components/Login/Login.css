@@ -1,8 +1,23 @@
+/* Login.css */
+
 .container {
   max-width: 900px;
   margin: 0 auto;
   padding: 40px;
   margin-top: 10%;
+  overflow: hidden;
+}
+
+.login-grid {
+  display: grid;
+  grid-template-columns: 0.1fr 1.5fr 8fr;
+  grid-gap: 10px;
+}
+
+.login-text {
+  margin-top: 30px;
+  grid-column: 1 / 4;
+  text-align: center;
 }
 
 .form-group {
@@ -24,7 +39,7 @@
 }
 
 .btn-group {
-  margin-top: .0001px;
+  margin-top: 5px;
   margin-bottom: 20px;
 }
 
@@ -41,7 +56,8 @@
   color: #fff;
 }
 
-.btn-danger {
-  background-color: #dc3545;
-  color: #fff;
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
 }
