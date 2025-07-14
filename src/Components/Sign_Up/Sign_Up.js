@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './Sign_Up.css';
 import { useNavigate } from 'react-router-dom';
-import { API_URL } from '../../config';
+import { API_URL } from '../../config'; // Make sure this is correctly set to http://localhost:5000
 
 function SignUp() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showerr, setShowerr] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   const navigate = useNavigate();
 
   const register = async (e) => {
@@ -23,8 +23,9 @@ function SignUp() {
 
       const json = await response.json();
 
-      if (json.authtoken) {
-        sessionStorage.setItem('auth-token', json.authtoken);
+      if (response.ok) {
+        // ✅ Registration success
+        sessionStorage.setItem('auth-token', json.authtoken || 'dummy-token');
         sessionStorage.setItem('name', name);
         sessionStorage.setItem('phone', phone);
         sessionStorage.setItem('email', email);
@@ -32,21 +33,18 @@ function SignUp() {
         navigate('/');
         window.location.reload();
       } else {
-        if (json.errors) {
-          setShowerr(json.errors[0].msg); // Show only the first validation error
-        } else {
-          setShowerr(json.error || 'Registration failed');
-        }
+        // ❌ Backend validation or other error
+        const msg = json.errors?.[0]?.msg || json.error || 'Registration failed';
+        setErrorMsg(msg);
       }
-    } catch (error) {
-      setShowerr('Something went wrong. Please try again.');
+    } catch (err) {
+      setErrorMsg('🚫 Something went wrong. Please try again.');
     }
   };
 
   return (
     <div className="container" style={{ marginTop: '5%' }}>
       <form onSubmit={register}>
-        {/* Name input */}
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
@@ -57,10 +55,10 @@ function SignUp() {
             id="name"
             className="form-control"
             placeholder="Enter your name"
+            required
           />
         </div>
 
-        {/* Phone input */}
         <div className="form-group">
           <label htmlFor="phone">Phone</label>
           <input
@@ -71,10 +69,10 @@ function SignUp() {
             id="phone"
             className="form-control"
             placeholder="Enter your phone number"
+            required
           />
         </div>
 
-        {/* Email input */}
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
@@ -85,10 +83,10 @@ function SignUp() {
             id="email"
             className="form-control"
             placeholder="Enter your email"
+            required
           />
         </div>
 
-        {/* Password input */}
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
@@ -99,12 +97,12 @@ function SignUp() {
             type="password"
             className="form-control"
             placeholder="Enter your password"
+            required
           />
         </div>
 
-        {/* Error message */}
-        {showerr && (
-          <div style={{ color: 'red', marginBottom: '10px' }}>{showerr}</div>
+        {errorMsg && (
+          <div style={{ color: 'red', marginBottom: '10px' }}>{errorMsg}</div>
         )}
 
         <div className="btn-group">

@@ -1,1 +1,1 @@
-export const API_URL = "http://localhost:5000";
+export const API_URL = "https://dhiraj-5000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai";
