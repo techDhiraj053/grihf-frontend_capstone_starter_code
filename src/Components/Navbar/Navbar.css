@@ -9,17 +9,51 @@ body {
   background-color: #333;
   overflow: hidden;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between; /* Spread items to both ends */
+  align-items: center;
   padding: 10px 20px;
+  color: white;
+}
+
+.navbar h2 {
+  color: white;
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .navbar a {
   color: white;
   text-decoration: none;
-  padding: 14px 20px;
+  padding: 10px 15px;
   display: block;
 }
 
 .navbar a:hover {
   background-color: #575757;
+  border-radius: 5px;
+}
+
+.username {
+  margin-left: 10px;
+  font-weight: bold;
+  color: #00eaff;
+}
+
+.logout-btn {
+  margin-left: 15px;
+  padding: 8px 12px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #cc0000;
 }

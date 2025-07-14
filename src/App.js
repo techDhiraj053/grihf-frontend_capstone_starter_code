@@ -5,7 +5,7 @@ import Login from './Components/Login/Login';
 import SignUp from './Components/Sign_Up/Sign_Up';
 
 import Navbar from './Components/Navbar/Navbar';
-import Landing_Page from './Components/Landing_Page/Landing_Page';
+import LandingPage from './Components/Landing_Page/Landing_Page';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-        <Route path="/" element={<Landing_Page />} />
+        <Route path="/" element={<LandingPage />} />
         {/* Add other routes here if needed */}
       </Routes>
     </BrowserRouter>

@@ -1,7 +1,7 @@
 import React from "react";
 import "./LandingPage.css"; // ✅ Keep this line since your CSS file is named LandingPage.css
 
-const Landing_Page = () => {
+const LandingPage = () => {
   return (
     <section className="hero-section">
       <div>
@@ -32,4 +32,4 @@ const Landing_Page = () => {
   );
 };
 
-export default Landing_Page;
+export default LandingPage;

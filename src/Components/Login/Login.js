@@ -31,8 +31,22 @@ const Login = () => {
     }
   };
 
+  const handleLogoutClick = () => {
+    alert("Logout clicked!");
+    // You can replace this alert with actual logout logic if needed
+  };
+
   return (
     <div className="container">
+      {/* Visible Logout button */}
+      <button
+        className="btn btn-primary"
+        style={{ marginBottom: "20px" }}
+        onClick={handleLogoutClick}
+      >
+        Logout
+      </button>
+
       <form className="login-grid" onSubmit={handleSubmit}>
         <div className="login-text">
           <h2>Login</h2>
